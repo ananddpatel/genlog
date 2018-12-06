@@ -15,15 +15,18 @@ const server = new Server(app);
 
 const io = socketIO(server);
 io.on('connect', client => {
-    console.log('client has connected');
-    
-    // setInterval(() => {
-    //     client.emit('genLogEvent2S', {hello: 'world from server'})
-    // }, 2000)
-    client.on('genLogEvent2S', data => { console.log('socket backend genLogEvent2S', data) });
-    client.on('genLogEvent', data => { console.log('socket backend genLogEvent', data) });
-    client.on('disconnect', () => { console.log('socket backend disconnect ') });
+    setInterval(() => {
+        client.emit('myCustomEvent', {hello: 'world from server'})
+    }, 2000)
+    client.on('clientEvent', (data) => {
+        console.log('clientEvent', data);
+    })
+    // client.on('genLogEvent2S', data => { console.log('socket backend genLogEvent2S', data) });
+    // client.on('genLogEvent', data => { console.log('socket backend genLogEvent', data) });
+    // client.on('disconnect', () => { console.log('socket backend disconnect ') });
 });
+
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

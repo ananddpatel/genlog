@@ -6,18 +6,20 @@ const app = new Vue({
         title: 'GENLog'
     },
     mounted() {
-        socket.on('connect', client => {
-            console.log('socket connected');
-            setInterval(() => {
-                client.emit('genLogEvent', {hello: 'world from client'})
-            }, 2000)
+        // socket.on('connect', client => {
+        //     console.log('socket connected');
+        // });
+        setInterval(() => {
+            console.log('clientEvent emit');
+            
+            socket.emit('clientEvent', {hello: 'world from client'})
+        }, 2000)
+        socket.on('myCustomEvent', function(data){
+            console.log('server emitted myCustomEvent', data);
         });
-        socket.on('genLogEvent2S', function(data){
-            console.log('socket genLogEvent2S', data);
-        });
-        socket.on('disconnect', function(){
-            console.log('socket disconnect');
-        });
+        // socket.on('disconnect', function(){
+        //     console.log('socket disconnect');
+        // });
     },
     computed: {
         
