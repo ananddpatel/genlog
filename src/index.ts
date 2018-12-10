@@ -23,29 +23,9 @@ io.on('connect', client => {
     }
 });
 
-
 export const emitLogEvent = (logData) => {
-    if (socketClient) {
-        console.log('emitted data');
-        
-        socketClient.emit('logEvent', logData)
-    }
+    io.sockets.emit('logEvent', logData);
 }
-
-
-// setInterval(() => {
-//     // console.log(socketClient);
-    
-//     emitLogEvent({
-//         time: new Date().toLocaleString(),
-//         app: 'server',
-//         type: 'info',
-//         message: 'simple message from server',
-//         payload: {hello: 'world from server'}
-//     })
-// }, 2000);
-
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -62,6 +42,7 @@ mongoose.connect(
 
 app.get('/', helloWorldController.index);
 app.post('/log', helloWorldController.emitLog);
+app.get('/logs', helloWorldController.getLogs);
 
 const port = process.env.PORT || 3000
 server.listen(port, () => {

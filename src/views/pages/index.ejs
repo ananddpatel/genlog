@@ -18,6 +18,12 @@
     <% include ../partials/nav %>
     <div class="container-fluid">
       <div id="app">
+        <div v-if="error" class="alert alert-danger">
+          {{error}}
+          <button type="button" class="close" @click="closeErrorBanner">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <div class="p-2">
           <div class="row border-bottom align-items-center">
             <div class="col-2 "><strong>time</strong></div>
