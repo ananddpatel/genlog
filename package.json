@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon --config nodemon.json",
     "build": "tsc -p .",
-    "serve": "node dist/index.js"
+    "serve": "node dist/index.js",
+    "copy-static": "cp -r src/views/ ./dist/ && cp -r src/public/ ./dist/",
+    "start": "npm run build && npm run copy-static && npm run serve"
   },
   "author": "",
   "license": "ISC",

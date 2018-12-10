@@ -1,1 +1,1 @@
-web: node node_modules/ts-node/dist/bin.js src/index.ts
+web: npm start
