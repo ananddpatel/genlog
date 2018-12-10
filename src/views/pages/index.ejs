@@ -11,6 +11,7 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/public/style.css" />
     <link rel="stylesheet" href="/public/theme.css" />
   </head>
   <body>
@@ -19,16 +20,20 @@
       <div id="app">
         <div class="p-2">
           <div class="row border-bottom align-items-center">
-            <div class="col-1 "><strong>time</strong></div>
+            <div class="col-2 "><strong>time</strong></div>
             <div class="col-1 "><strong>app</strong></div>
             <div class="col-1 "><strong>type</strong></div>
-            <div class="col-8 "><strong>message</strong></div>
+            <div class="col-3 "><strong>message</strong></div>
+            <div class="col-5 "><strong>payload</strong></div>
           </div>
-          <div v-for="num in range(50)" class="row" :key="num">
-            <div class="col-1 ">asdssad</div>
-            <div class="col-1 ">asdssad</div>
-            <div class="col-1 ">asdssad</div>
-            <div class="col-8 ">asdssad</div>
+          <div v-for="(log, i) in logs" class="row log-item" :key="'log'+i">
+            <div class="col-2 ">{{log.time}}</div>
+            <div class="col-1 ">{{log.app}}</div>
+            <div class="col-1 ">{{log.type}}</div>
+            <div class="col-3 ">{{log.message}}</div>
+            <div class="col-5 ">
+              <code>{{log.payload}}</code>
+            </div>
           </div>
         </div>
       </div>
