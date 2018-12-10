@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --config nodemon.json",
-    "build": "tsc -p .",
+    "build": "node node_modules/typescript/bin/tsc -p .",
     "serve": "node dist/index.js",
     "copy-static": "cp -r src/views/ ./dist/ && cp -r src/public/ ./dist/",
     "start": "npm run build && npm run copy-static && npm run serve"
