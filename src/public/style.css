@@ -1,5 +1,6 @@
 body {
     background: #ececec;
+    /* font-size: 11px !important; */
 }
 
 .container {
@@ -11,4 +12,16 @@ body {
 }
 .log-item:hover {
     background-color: #d7f4ff;
+}
+
+.payload-col {
+    max-height: 150px;
+    overflow-y: scroll;
+}
+
+.log-headers div, .log-item div {
+    padding-left: 3px;
+    padding-right: 3px;
+    /* border-right: 1px solid #dfd7c8;
+    border-bottom: 1px solid #dfd7c8; */
 }
