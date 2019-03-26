@@ -9,7 +9,7 @@ const app = new Vue({
         allowed: false
     },
     mounted() {
-        this.allowed = localStorage.getItem('lallow');
+        this.allowed = localStorage.getItem('lallow') ? true : false;
         if (this.allowed) {
             axios.get('/logs')
                 .then(res => {
