@@ -16,7 +16,7 @@
   </head>
   <body>
     <% include ../partials/nav %>
-    <div class="container-fluid">
+    <div v-if="allowed" class="container-fluid">
       <div id="app">
         <div v-if="error" class="alert alert-danger">
           {{error}}

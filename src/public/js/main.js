@@ -5,21 +5,25 @@ const app = new Vue({
     data: {
         title: 'GENLog',
         logs: [],
-        error: null
+        error: null,
+        allowed: false
     },
     mounted() {
-        axios.get('/logs')
-            .then(res => {
-                this.logs = res.data.map(item => ({
-                    ...item,
-                    time: new Date(item.time).toLocaleString()
-                }));
+        this.allowed = localStorage.getItem('lallow');
+        if (this.allowed) {
+            axios.get('/logs')
+                .then(res => {
+                    this.logs = res.data.map(item => ({
+                        ...item,
+                        time: new Date(item.time).toLocaleString()
+                    }));
+                })
+                .catch(this.handleErr)
+            socket.on('connect', () => {
+                console.log('connected')
             })
-            .catch(this.handleErr)
-        socket.on('connect', () => {
-            console.log('connected')
-        })
-        socket.on('logEvent', this.handleSocketLogEvent);
+            socket.on('logEvent', this.handleSocketLogEvent);
+        }
     },
     methods: {
         range(n) {
