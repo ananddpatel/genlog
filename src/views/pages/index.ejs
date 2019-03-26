@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="/public/style.css" />
     <link rel="stylesheet" href="/public/theme.css" />
   </head>
-  <body>
+  <body v-if="allowed" id="app">
     <% include ../partials/nav %>
-    <div v-if="allowed" class="container-fluid">
-      <div id="app">
+    <div class="container-fluid">
+      <div>
         <div v-if="error" class="alert alert-danger">
           {{error}}
           <button type="button" class="close" @click="closeErrorBanner">
